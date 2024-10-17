@@ -1,0 +1,24 @@
+@page "/historico"
+@inherits HistoricoPage
+<h1>Histórico de Cálculos</h1>
+
+@if (_calculos.Count >= 1)
+{
+    <MudDataGrid Items="@_calculos" Filterable="false" Class="mt-4">
+
+        <Columns>
+            <PropertyColumn Property="x => x.Id" Title="#" Filterable="true" Sortable="false"></PropertyColumn>
+            <PropertyColumn Property="x => x.TipoCalculo.GetDescription()" Title="Tipo de Operação" Filterable="false" Sortable="false"/>
+            <PropertyColumn Property="x => x.ValorA" Title="Valor A" Filterable="false" Sortable="false"></PropertyColumn>
+            <PropertyColumn Property="x => x.ValorB" Title="Valor B" Filterable="false" Sortable="false"></PropertyColumn>
+            <PropertyColumn Property="x => x.Resultado" Title="Resultado" Filterable="false" Sortable="false"></PropertyColumn>
+            <PropertyColumn Property="x => x.DataCalculo" Title="Data/Hora" Filterable="false" Sortable="false"></PropertyColumn>
+
+        </Columns>
+
+    </MudDataGrid>
+}
+else
+{
+ <p>Não há cálculos registrados</p>   
+}

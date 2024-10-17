@@ -1,0 +1,29 @@
+﻿@page "/"
+@using CalculadoraPekus.Enums
+@inherits HomePage
+<PageTitle>Home</PageTitle>
+
+@* <MudText Typo="Typo.h5" GutterBottom="true">Calculadora Blazor</MudText> *@
+<MudText Color="Color.Info" Typo="Typo.h5" Align="Align.Center" Class="mb-2 mt-1" Style="font-weight: bold">Calculadora</MudText>
+
+<MudGrid Class="d-flex justify-center align-center" Style="height: 90vh;">
+
+    <MudItem xs="12" sm="12" md="8" lg="6" xxl="6">
+        <MudPaper Outlined="true" Class="pa-15 mud-width-full" Elevation="15">
+        <EditForm Model="@CalculoModel" OnValidSubmit="@OnValidSubmitAsync">
+            <DataAnnotationsValidator/>
+            <MudNumericField Label="Digite o primeiro valor" Format="N2" @bind-Value="@CalculoModel.ValorA" Class="mb-8 pa-2" For="@(() => CalculoModel.ValorA)"/>
+            <MudNumericField Label="Digite o segundo valor" Format="N2" @bind-Value="@CalculoModel.ValorB" Class="mb-8 pa-2" For="@(() => CalculoModel.ValorB)"/>
+
+            <MudSelect T="ETipoCalculo" Label="Selecione a operação" AnchorOrigin="Origin.BottomCenter" @bind-Value="CalculoModel.TipoCalculo" For="@(() => CalculoModel.TipoCalculo)">
+                <MudSelectItem Class="pa-2" T="ETipoCalculo" Value="ETipoCalculo.Soma">Adição</MudSelectItem>
+                <MudSelectItem Class="pa-2" T="ETipoCalculo" Value="ETipoCalculo.Subtracao">Subtração</MudSelectItem>
+                <MudSelectItem Class="pa-2" T="ETipoCalculo" Value="ETipoCalculo.Multiplicacao">Multiplicação</MudSelectItem>
+                <MudSelectItem Class="pa-2" T="ETipoCalculo" Value="ETipoCalculo.Divisao">Divisão</MudSelectItem>
+            </MudSelect>
+
+            <MudButton ButtonType="ButtonType.Submit" Class="pa-4 mt-5" FullWidth="true" Variant="Variant.Filled" Color="Color.Info">CALCULAR</MudButton>
+        </EditForm>
+        </MudPaper> 
+    </MudItem>
+</MudGrid>
