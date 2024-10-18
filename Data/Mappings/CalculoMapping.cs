@@ -20,12 +20,12 @@ public class CalculoMapping : IEntityTypeConfiguration<Calculo>
         builder.Property(x => x.ValorA)
             .IsRequired()
             .HasColumnName("ValorA")
-            .HasColumnType("DECIMAL");
+            .HasColumnType("DECIMAL(18,2)");
         
         builder.Property(x => x.ValorB)
             .IsRequired()
             .HasColumnName("ValorB")
-            .HasColumnType("DECIMAL");
+            .HasColumnType("DECIMAL(18,2)");
 
         builder.Property(x => x.Resultado)
             .IsRequired()

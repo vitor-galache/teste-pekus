@@ -16,6 +16,11 @@ public partial class HomePage : ComponentBase
 
     public async Task OnValidSubmitAsync()
     {
+        if (CalculoModel.ValorA == 0 || CalculoModel.ValorB == 0)
+        {
+            Snackbar.Add("Os dois valores devem ser diferentes de 0",Severity.Warning);
+            return;
+        }
         switch (CalculoModel.TipoCalculo)
         {
             case ETipoCalculo.Soma:
@@ -31,11 +36,7 @@ public partial class HomePage : ComponentBase
                 break;
             
             case ETipoCalculo.Divisao:
-                if (CalculoModel.ValorA < CalculoModel.ValorB)
-                {
-                    Snackbar.Add("O valor A não pode ser menor que o B na operação de divisão", Severity.Error);
-                    return;
-                }
+                
                 CalculoModel.Dividir();
                 break;
         }

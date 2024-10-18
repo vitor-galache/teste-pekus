@@ -4,6 +4,8 @@
 
 @if (_calculos.Count >= 1)
 {
+    <MudButton Variant="Variant.Filled" Color="Color.Info" EndIcon="@Icons.Material.TwoTone.Add" Href="/">ADICIONAR CÁLCULO</MudButton>
+    
     <MudDataGrid Items="@_calculos" Filterable="false" Class="mt-4">
 
         <Columns>
@@ -11,7 +13,7 @@
             <PropertyColumn Property="x => x.TipoCalculo.GetDescription()" Title="Tipo de Operação" Filterable="false" Sortable="false"/>
             <PropertyColumn Property="x => x.ValorA" Title="Valor A" Filterable="false" Sortable="false"></PropertyColumn>
             <PropertyColumn Property="x => x.ValorB" Title="Valor B" Filterable="false" Sortable="false"></PropertyColumn>
-            <PropertyColumn Property="x => x.Resultado" Title="Resultado" Filterable="false" Sortable="false"></PropertyColumn>
+            <PropertyColumn Property="x => x.Resultado" Title="Resultado" Format="N2" Filterable="false" Sortable="false"></PropertyColumn>
             <PropertyColumn Property="x => x.DataCalculo" Title="Data/Hora" Filterable="false" Sortable="false"></PropertyColumn>
 
         </Columns>
@@ -20,5 +22,6 @@
 }
 else
 {
- <p>Não há cálculos registrados</p>   
+    <p>Não há cálculos registrados</p>
+    <MudButton Class="mt-8" EndIcon="@Icons.Material.TwoTone.Add" Variant="Variant.Filled" Color="Color.Info" Href="/">ADICIONAR CÁLCULO</MudButton>
 }
